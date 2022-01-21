@@ -1,0 +1,4 @@
+user_naming_bundle_dash:
+  resource: Training\Bundle\UserNamingBundle\Controller\DashboardController
+  type: annotation
+  prefix: /dashboard

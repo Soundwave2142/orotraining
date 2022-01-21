@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    public: true
+
+  # this is override since I get error about service being private (todo: find better way?)
+  oro_dashboard.widget_configs:
+    class: Oro\Bundle\DashboardBundle\Model\WidgetConfigs
+    arguments:
+      - '@oro_dashboard.config_provider'
+      - '@oro_dashboard.config_resolver'
+      - '@doctrine.orm.entity_manager'
+      - '@oro_dashboard.widget_config_value.provider'
+      - '@translator'
+      - '@event_dispatcher'
+      - '@oro_dashboard.widget_config_visibility_filter'
+      - '@request_stack'
+
+  Oro\Bundle\DashboardBundle\Model\WidgetConfigs:
+    alias: 'oro_dashboard.widget_configs'
