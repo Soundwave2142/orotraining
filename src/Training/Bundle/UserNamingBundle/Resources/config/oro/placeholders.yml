@@ -1,0 +1,9 @@
+placeholders:
+    placeholders:
+        dashboard_navButtons_before:
+            items:
+                dashboard_navButtons_before_item: ~
+
+    items:
+        dashboard_navButtons_before_item:
+            template: TrainingUserNamingBundle:Placeholders:test.html.twig
