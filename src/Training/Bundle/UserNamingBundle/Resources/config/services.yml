@@ -3,6 +3,9 @@ services:
     public: true
     autowire: true
 
+  Training\Bundle\UserNamingBundle\:
+    resource: '../../*'
+
   # this is override since I get error about service being private (todo: find better way?)
   oro_dashboard.widget_configs:
     class: Oro\Bundle\DashboardBundle\Model\WidgetConfigs
@@ -18,6 +21,19 @@ services:
 
   Oro\Bundle\DashboardBundle\Model\WidgetConfigs:
     alias: 'oro_dashboard.widget_configs'
+
+  # this is override since I get error about service being private (todo: find better way?)
+  oro_dashboard.manager:
+    class: Oro\Bundle\DashboardBundle\Model\Manager
+    public: true
+    arguments:
+      - '@oro_dashboard.factory'
+      - '@doctrine.orm.entity_manager'
+      - '@oro_security.acl_helper'
+      - '@security.token_storage'
+
+  Oro\Bundle\DashboardBundle\Model\Manager:
+    alias: oro_dashboard.manager
 
   # entity name decorator
   Training\Bundle\UserNamingBundle\Provider\EntityNameProviderDecorator:

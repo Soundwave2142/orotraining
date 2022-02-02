@@ -1,4 +1,9 @@
 user_naming_bundle_dash:
   resource: Training\Bundle\UserNamingBundle\Controller\DashboardController
   type: annotation
-  prefix: /dashboard
+  prefix: /
+
+training_user_naming_controller:
+  resource: "@TrainingUserNamingBundle/Controller/UserNamingController.php"
+  type: annotation
+  prefix: /user/naming

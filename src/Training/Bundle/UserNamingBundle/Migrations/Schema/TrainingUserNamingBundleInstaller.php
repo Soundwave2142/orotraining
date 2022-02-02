@@ -50,6 +50,8 @@ class TrainingUserNamingBundleInstaller implements Installation, ExtendExtension
         $table->addColumn('title', 'string', ['length' => 64]);
         $table->addColumn('format', 'string', ['length' => 255]);
         $table->setPrimaryKey(['id']);
+
+        // todo: investigate why "serialized_data" column was not added
     }
 
     /**

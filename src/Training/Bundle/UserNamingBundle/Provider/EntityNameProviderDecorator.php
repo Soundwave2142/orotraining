@@ -11,14 +11,19 @@ use Oro\Bundle\UserBundle\Entity\User;
 class EntityNameProviderDecorator implements EntityNameProviderInterface
 {
     /** @var EntityNameProviderInterface */
-    private $originalProvider;
+    private EntityNameProviderInterface $originalProvider;
+
+    /** @var UserFullNameProvider */
+    private UserFullNameProvider $fullNameProvider;
 
     /**
      * @param EntityNameProviderInterface $originalProvider
+     * @param UserFullNameProvider $fullNameProvider
      */
-    public function __construct(EntityNameProviderInterface $originalProvider)
+    public function __construct(EntityNameProviderInterface $originalProvider, UserFullNameProvider $fullNameProvider)
     {
         $this->originalProvider = $originalProvider;
+        $this->fullNameProvider = $fullNameProvider;
     }
 
     /**
@@ -27,6 +32,10 @@ class EntityNameProviderDecorator implements EntityNameProviderInterface
     public function getName($format, $locale, $entity)
     {
         if ($entity instanceof User) {
+            if ($namingType = $entity->getNamingType()) {
+                return $this->fullNameProvider->getFullName($entity, $namingType->getFormat());
+            }
+
             return sprintf('%s "%s" %s', $entity->getFirstName(), $entity->getMiddleName(), $entity->getLastName());
         }
 
