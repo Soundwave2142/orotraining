@@ -1,0 +1,13 @@
+# TODO: check if this works
+# no need to include it in dependency injection?
+
+Training\Bundle\UserNamingBundle\Entity\UserNamingType:
+  properties:
+    title:
+      - NotBlank: ~
+      - Length:
+          max: 64
+    format:
+      - NotBlank: ~
+      - Length:
+          max: 255

@@ -3,6 +3,7 @@
 namespace Training\Bundle\UserNamingBundle\EventListener;
 
 use Oro\Bundle\UIBundle\Event\BeforeListRenderEvent;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -12,6 +13,17 @@ use Twig\Error\SyntaxError;
  */
 class UserViewNamingListener
 {
+    /** @var AuthorizationCheckerInterface */
+    private AuthorizationCheckerInterface $authorizationChecker;
+
+    /**
+     * @param AuthorizationCheckerInterface $authorizationChecker
+     */
+    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $this->authorizationChecker = $authorizationChecker;
+    }
+
     /**
      * @param BeforeListRenderEvent $event
      * @return void
@@ -22,6 +34,10 @@ class UserViewNamingListener
      */
     public function onUserView(BeforeListRenderEvent $event)
     {
+        if (!$this->authorizationChecker->isGranted('training_user_naming_info')) {
+            return;
+        }
+
         /** @var $user */
         if (!$user = $event->getEntity()) {
             return;
