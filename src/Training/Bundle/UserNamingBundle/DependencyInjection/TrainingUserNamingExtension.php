@@ -15,7 +15,7 @@ class TrainingUserNamingExtension extends Extension
 {
     /** @var array */
     private array $loadYml = [
-        'services.yml', 'controllers.yml', 'import_export.yml'
+        'services.yml', 'controllers.yml', 'import_export.yml', 'processors.yml'
     ];
 
     /**
