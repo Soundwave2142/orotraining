@@ -2,7 +2,10 @@ datagrids:
   dashboards-grid:
     columns:
       ownerName:
-        template: TrainingUserNamingBundle:UserNaming:Datagrid/Property:owner.html.twig
+        type: twig
+        frontend_type: html
+        template: 'TrainingUserNamingBundle:UserNaming:Datagrid:Property/owner.html.twig'
+
   training-user-naming-types-grid:
     extended_entity_name: 'Training\Bundle\UserNamingBundle\Entity\UserNamingType'
     acl_resource: training_user_naming_view

@@ -1,1 +1,7 @@
-<i>{{ format|full_name_example }}</i>
+{% if example %}
+    <i>{{ example }}</i>
+{% elseif format %}
+    <i>{{ format|full_name_example }}</i>
+{% else %}
+    <i>{{ 'N/A'|trans }}</i>
+{% endif %}

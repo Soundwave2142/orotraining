@@ -117,4 +117,13 @@ class UserNamingType extends ExtendUserNamingType
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getExample()
+    {
+        // todo add migration??
+        return 'test';
+    }
 }
