@@ -6,12 +6,13 @@ services:
 
   Training\Bundle\UserNamingBundle\:
     resource: '../../*'
+    exclude: '../../{Entity,Migrations,Tests}'
 
   # controllers are imported separately to make sure services can be injected
   # as action arguments even if you don't extend any base controller class
   Training\Bundle\UserNamingBundle\Controller\:
     resource: '../../Controller'
-    tags: ['controller.service_arguments']
+    tags: [ 'controller.service_arguments' ]
 
   # this is override since I get error about service being private (todo: find better way?)
   oro_dashboard.widget_configs:

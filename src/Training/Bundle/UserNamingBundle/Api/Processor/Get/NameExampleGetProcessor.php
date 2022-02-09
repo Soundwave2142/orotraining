@@ -7,6 +7,9 @@ use Oro\Component\ChainProcessor\ContextInterface;
 use Oro\Component\ChainProcessor\ProcessorInterface;
 use Training\Bundle\UserNamingBundle\Provider\UserFullNameProvider;
 
+/**
+ * @author Soundwave2142
+ */
 class NameExampleGetProcessor implements ProcessorInterface
 {
     /** @var UserFullNameProvider */
